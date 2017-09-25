@@ -418,7 +418,8 @@ can be found [here][cronvendor].
 >**Note:**
 Added in GitLab Runner v1.1.0.
 
-This defines the distributed cache feature. More details can be found
+This defines the distributed cache feature. More details can
+ be found
 in the [runners autoscale documentation](autoscale.md#distributed-runners-caching).
 
 | Parameter        | Type             | Description |
@@ -432,6 +433,11 @@ in the [runners autoscale documentation](autoscale.md#distributed-runners-cachin
 | `Insecure`       | boolean          | Set to `true` if the S3 service is available by `HTTP`. Is set to `false` by default. |
 | `Path`           | string           | Name of the path to prepend to the cache URL. |
 | `Shared`         | boolean          | Enables cache sharing between runners, `false` by default. |
+
+
+
+> **Note:** if `Shared` = true than the runner/<runner-id> portion from the cache lookup is removed
+> S3 Bucket URL is than `http(s)://<ServerAddress>/<BucketName>/project/<id>/<cache-key>` instead of `http(s)://<ServerAddress>/<BucketName>/runner/<runner-id>/project/<id>/<cache-key>`
 
 Example:
 
